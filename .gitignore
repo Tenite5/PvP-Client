@@ -1,0 +1,46 @@
+# gradle
+.gradle/
+build/
+out/
+classes/
+
+# eclipse
+*.launch
+
+# idea
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# vscode
+.settings/
+.vscode/
+bin/
+.classpath
+.project
+
+# macos
+*.DS_Store
+
+# fabric
+run/
+
+# java
+hs_err_*.log
+replay_*.log
+*.hprof
+*.jfr
+
+# decompiled minecraft sources (local reference only)
+mcsrc/
+
+# claude code / ai tools
+.claude/
+CONTEXT.md
+ONBOARDING.md
+
+# misc generated files
+classpath.txt
+client_classes.txt
+common_classes.txt
