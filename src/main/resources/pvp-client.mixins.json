@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "pvp.client.mixin",
+	"package": "io.github.tenite5.pvpclient.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
 		"ExampleMixin"

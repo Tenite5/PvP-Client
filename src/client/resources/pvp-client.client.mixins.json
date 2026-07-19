@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "pvp.client.client.mixin",
+	"package": "io.github.tenite5.pvpclient.client.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"client": [
 		"CameraMixin",

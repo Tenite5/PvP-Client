@@ -12,10 +12,10 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"pvp.client.PvpClient"
+			"io.github.tenite5.pvpclient.PvpClient"
 		],
 		"client": [
-			"pvp.client.client.PvpClientClient"
+			"io.github.tenite5.pvpclient.client.PvpClientClient"
 		]
 	},
 	"mixins": [
