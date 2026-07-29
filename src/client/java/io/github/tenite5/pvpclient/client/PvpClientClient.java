@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElement;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.VanillaHudElements;
+import net.fabricmc.fabric.api.client.rendering.v1.level.LevelExtractionEvents;
 import net.minecraft.client.Minecraft;
 import io.github.tenite5.pvpclient.PvpClient;
 import io.github.tenite5.pvpclient.client.core.ConfigManager;
@@ -56,6 +57,7 @@ public class PvpClientClient implements ClientModInitializer {
 		});
 
 		ClientLifecycleEvents.CLIENT_STOPPING.register(minecraft -> ConfigManager.save());
+		LevelExtractionEvents.END_EXTRACTION.register(context -> ModuleManager.HITBOXES.extract(context));
 
 		PvpClient.LOGGER.info("pvp client loaded with {} modules", ModuleManager.all().size());
 	}

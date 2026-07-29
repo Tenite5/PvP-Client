@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"id": "pvp-client",
+	"version": "${version}",
+	"name": "pvp client",
+	"description": "A lightweight PvP client with HUD overlays (FPS, ping, effects, armor, saturation), zoom, freelook, toggle sprint, custom hit colors and hitboxes, view model tweaks, and client-side atmosphere control.",
+	"authors": [
+		"Tenite"
+	],
+	"license": "MIT",
+	"icon": "assets/pvp-client/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"main": [
+			"io.github.tenite5.pvpclient.PvpClient"
+		],
+		"client": [
+			"io.github.tenite5.pvpclient.client.PvpClientClient"
+		]
+	},
+	"mixins": [
+		"pvp-client.client.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~1.21.4",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

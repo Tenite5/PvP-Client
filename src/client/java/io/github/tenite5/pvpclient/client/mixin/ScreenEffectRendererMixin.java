@@ -46,7 +46,13 @@ public class ScreenEffectRendererMixin {
 	private void pvpClient$totemPopSize(PoseStack poseStack, float partialTicks, SubmitNodeCollector submitNodeCollector, CallbackInfo ci) {
 		ViewModelModule viewModel = ModuleManager.VIEW_MODEL;
 		float size = viewModel.totemSize.getF();
-		if (viewModel.isEnabled() && size != 1.0F) {
+		if (!viewModel.isEnabled()) {
+			return;
+		}
+		if (viewModel.totemOffsetX.get() != 0.0 || viewModel.totemOffsetY.get() != 0.0) {
+			poseStack.translate(viewModel.totemOffsetX.getF(), viewModel.totemOffsetY.getF(), 0.0F);
+		}
+		if (size != 1.0F) {
 			poseStack.scale(size, size, size);
 		}
 	}

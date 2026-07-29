@@ -1,0 +1,22 @@
+{
+	"required": true,
+	"package": "io.github.tenite5.pvpclient.client.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"CameraMixin",
+		"EquipmentLayerRendererMixin",
+		"GameRendererMixin",
+		"HudMixin",
+		"ItemInHandRendererMixin",
+		"LevelMixin",
+		"MouseHandlerMixin",
+		"OverlayTextureMixin",
+		"ScreenEffectRendererMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

@@ -88,3 +88,54 @@ publishing {
 }
 
 tasks.register('printCp') { def files = sourceSets.client.compileClasspath.files; doLast { files.each { println it } } }
+
+// Optional local test-profile deployment. Keep the machine-specific path in
+// local.properties so it is never committed to the repository.
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+	localPropertiesFile.withInputStream { localProperties.load(it) }
+}
+
+def testModsDir = localProperties.getProperty('testModsDir')
+tasks.register('deployTestMod', Copy) {
+	group = 'fabric'
+	description = 'Copies the production mod into the locally configured test profile.'
+	dependsOn tasks.named('jar')
+	onlyIf { testModsDir != null && !testModsDir.isBlank() }
+	from(tasks.named('jar').flatMap { it.archiveFile })
+	into(testModsDir ?: layout.buildDirectory.dir('disabled-test-deploy'))
+	rename { 'pvp-client-dev.jar' }
+}
+
+tasks.register('syncCurrentVersionJar', Copy) {
+	group = 'build'
+	description = 'Copies the current production jar into the repository versions directory.'
+	dependsOn tasks.named('jar')
+	from(tasks.named('jar').flatMap { it.archiveFile })
+	into(rootProject.file('versions'))
+}
+
+tasks.named('build') {
+	finalizedBy tasks.named('deployTestMod'), tasks.named('syncCurrentVersionJar')
+}
+
+tasks.register('buildMinecraft12111', GradleBuild) {
+	group = 'build'
+	description = 'Builds the Minecraft 1.21.11 port.'
+	dir = file('ports/mc1_21_11')
+	tasks = ['clean', 'build']
+}
+
+tasks.register('buildMinecraft1214', GradleBuild) {
+	group = 'build'
+	description = 'Builds the Minecraft 1.21.4 port.'
+	dir = file('ports/mc1_21_4')
+	tasks = ['clean', 'build']
+}
+
+tasks.register('buildAllVersions') {
+	group = 'build'
+	description = 'Builds the current mod and every maintained Minecraft port.'
+	dependsOn tasks.named('build'), tasks.named('buildMinecraft12111'), tasks.named('buildMinecraft1214')
+}

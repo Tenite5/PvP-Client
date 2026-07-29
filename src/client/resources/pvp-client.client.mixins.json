@@ -6,6 +6,7 @@
 		"CameraMixin",
 		"ClientClockManagerMixin",
 		"EquipmentLayerRendererMixin",
+		"HudMixin",
 		"ItemInHandRendererMixin",
 		"LevelMixin",
 		"MouseHandlerMixin",

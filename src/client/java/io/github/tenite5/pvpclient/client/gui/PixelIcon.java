@@ -79,6 +79,26 @@ public final class PixelIcon {
 				"...RR...",
 				"........"
 			};
+			case "saturation" -> new String[] {
+				"........",
+				".OOOOOO.",
+				"OYYYYYYO",
+				"OYYYYYYO",
+				".OOOOOO.",
+				"..O..O..",
+				".OO..OO.",
+				"........"
+			};
+			case "hitboxes" -> new String[] {
+				"..CCCC..",
+				".C...CC.",
+				"C...C.C.",
+				"CCCC..C.",
+				"C..C..C.",
+				"C..CCCC.",
+				".CC...C.",
+				"..CCCC.."
+			};
 			case "togglesprint" -> new String[] {
 				"........",
 				"O...O...",
